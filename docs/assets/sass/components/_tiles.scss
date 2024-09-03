@@ -13,7 +13,7 @@
 
 		@include vendor('display', 'flex');
 		@include vendor('flex-wrap', 'wrap');
-		postiion: relative;
+		position: relative;
 		margin: ($gutter * -1) 0 0 ($gutter * -1);
 
 		article {
@@ -38,11 +38,11 @@
 					width: 100%;
 				}
 
-				&:before {
+				&:after {
 					@include vendor('pointer-events', 'none');
 					@include vendor('transition', (
 						'background-color #{$duration} #{$ease}',
-						'opacity #{$duration} #{$ease}'
+						'opacity #{$duration} #{$ease}',
 					));
 					content: '';
 					display: block;
@@ -53,10 +53,10 @@
 					height: 100%;
 					opacity: 1.0;
 					z-index: 1;
-					opacity: 0.8;
+					
 				}
 
-				&:after {
+				&:before {
 					@include vendor('pointer-events', 'none');
 					@include vendor('transition', 'opacity #{$duration} #{$ease}');
 					content: '';
@@ -70,7 +70,7 @@
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: 100% 100%;
-					opacity: 0.25;
+					opacity: 0;
 					z-index: 2;
 				}
 			}
@@ -169,7 +169,7 @@
 
 						&:before {
 							background-color: _palette(bg-accent);
-							opacity: 0.35;
+							opacity: 0.25;
 						}
 
 						&:after {

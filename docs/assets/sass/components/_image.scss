@@ -16,7 +16,7 @@
 			border-radius: _size(border-radius);
 			display: block;
 		}
-
+		
 		&.left,
 		&.right {
 			max-width: 40%;
@@ -33,6 +33,21 @@
 		}
 
 		&.right {
+			float: right;
+			padding: 0 0 1em 1.5em;
+			top: 0.25em;
+		}
+
+		&.left-fit,
+		&.right-fit {
+			max-width: 40%;
+
+			img {
+				width: 100%;
+			}
+		}
+
+		&.right-fit {
 			float: right;
 			padding: 0 0 1em 1.5em;
 			top: 0.25em;

@@ -1,6 +1,9 @@
 @import url(fontawesome-all.min.css);
-@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900");
 
+/* @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,700,900");
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap'); 
+@import url('https://fonts.googleapis.com/css2?family=Roboto:300,700,900');*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 /*
 	Phantom by HTML5 UP
 	html5up.net | @ajlkn
@@ -23,15 +26,19 @@ section, summary, time, mark, audio, video {
 	border: 0;
 	font-size: 100%;
 	font: inherit;
-	vertical-align: baseline;}
+	vertical-align: baseline;
+}
 
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-	display: block;}
+	display: block;
+}
+
 
 body {
 	line-height: 1;
 }
+  
 
 ol, ul {
 	list-style: none;
@@ -92,6 +99,7 @@ input, select, textarea {
 
 	html {
 		box-sizing: border-box;
+		overflow-y: scroll;
 	}
 
 	*, *:before, *:after {
@@ -117,7 +125,7 @@ input, select, textarea {
 
 	body, input, select, textarea {
 		color: #585858;
-		font-family: "Source Sans Pro", Helvetica, sans-serif;
+		font-family: "Roboto", Helvetica, sans-serif;
 		font-size: 16pt;
 		font-weight: 300;
 		line-height: 1.75;
@@ -171,7 +179,7 @@ input, select, textarea {
 		font-weight: 700;
 		line-height: 1.3;
 		margin: 0 0 1em 0;
-		letter-spacing: -0.035em;
+		letter-spacing: normal;
 	}
 
 		h1 a {
@@ -196,11 +204,11 @@ input, select, textarea {
 		}
 
 	h2, h3, h4, h5, h6 {
-		font-weight: 900;
+		font-weight: 600;
 		line-height: 1.5;
 		margin: 0 0 2em 0;
 		text-transform: uppercase;
-		letter-spacing: 0.35em;
+		letter-spacing: 0.15em;
 	}
 
 		h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -245,6 +253,47 @@ input, select, textarea {
 			font-size: 0.8em;
 		}
 
+	}
+
+	#light {
+		font-weight: 300;
+		text-transform: none;
+		letter-spacing: normal;
+		
+	}
+
+	#regular {
+		font-weight: 400;
+		text-transform: none;
+		letter-spacing: normal;
+		
+	}
+
+	#medium {
+		font-weight: 500;
+		text-transform: none;
+		letter-spacing: normal;
+		
+	}
+
+	#semibold {
+		font-weight: 600;
+		text-transform: none;
+		letter-spacing: normal;
+	}
+
+	#bold {
+		font-weight: 700;
+		text-transform: none;
+		letter-spacing: normal;
+	}
+
+	#smallerFont {
+		font-size: 75%;
+	}
+
+	#largerFont {
+		font-size: 125%;
 	}
 
 	sub {
@@ -2351,6 +2400,9 @@ input, select, textarea {
 			.image.fit img {
 				width: 100%;
 			}
+			.image.fit video {
+				width: 100%;
+			}
 
 		.image.main {
 			display: block;
@@ -2572,7 +2624,7 @@ input, select, textarea {
 		-webkit-flex-wrap: wrap;
 		-ms-flex-wrap: wrap;
 		flex-wrap: wrap;
-		postiion: relative;
+		position: relative;
 		margin: -2.5em 0 0 -2.5em;
 	}
 
@@ -2592,18 +2644,33 @@ input, select, textarea {
 				-ms-transition: -ms-transform 0.5s ease;
 				transition: transform 0.5s ease;
 				position: relative;
-				display: block;
-				width: 100%;
+				display: flex;
+				height: 100%;
+				width: max-content;
+				justify-content: center;
+				align-items: center;
 				border-radius: 4px;
 				overflow: hidden;
+				
 			}
 
 				.tiles article > .image img {
-					display: block;
-					width: 100%;
+					object-fit: cover;
+					flex-shrink: 0;
+					height: 412px;
+					width: 412px;
+					
+
+				}
+				.tiles article:hover img {
+					-webkit-filter: blur(20px); /* Chrome, Safari, Opera */
+   					filter: blur(20px);
+					background: rgb(242, 132, 158);
+
 				}
 
-				.tiles article > .image:before {
+
+				.tiles article > .image:after {
 					pointer-events: none;
 					-moz-transition: background-color 0.5s ease, opacity 0.5s ease;
 					-webkit-transition: background-color 0.5s ease, opacity 0.5s ease;
@@ -2612,16 +2679,15 @@ input, select, textarea {
 					content: '';
 					display: block;
 					position: absolute;
-					top: 0;
-					left: 0;
 					width: 100%;
 					height: 100%;
-					opacity: 1.0;
 					z-index: 1;
-					opacity: 0.8;
+					opacity: 1;
+					
+
 				}
 
-				.tiles article > .image:after {
+				.tiles article > .image:before {
 					pointer-events: none;
 					-moz-transition: opacity 0.5s ease;
 					-webkit-transition: opacity 0.5s ease;
@@ -2634,12 +2700,15 @@ input, select, textarea {
 					left: 0;
 					width: 100%;
 					height: 100%;
+					/*
 					background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100' preserveAspectRatio='none'%3E%3Cstyle%3Eline %7B stroke-width: 0.25px%3B stroke: %23ffffff%3B %7D%3C/style%3E%3Cline x1='0' y1='0' x2='100' y2='100' /%3E%3Cline x1='100' y1='0' x2='0' y2='100' /%3E%3C/svg%3E");
+					*/
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: 100% 100%;
 					opacity: 0.25;
 					z-index: 2;
+					object-fit: cover;
 				}
 
 			.tiles article > a {
@@ -2675,6 +2744,7 @@ input, select, textarea {
 				text-align: center;
 				text-decoration: none;
 				z-index: 3;
+				opacity: 0;
 			}
 
 				.tiles article > a > :last-child {
@@ -2683,6 +2753,7 @@ input, select, textarea {
 
 				.tiles article > a:hover {
 					color: #ffffff !important;
+					opacity: 1;
 				}
 
 				.tiles article > a h2 {
@@ -2708,7 +2779,6 @@ input, select, textarea {
 			.tiles article.style1 > .image:before {
 				background-color: #f2849e;
 			}
-
 			.tiles article.style2 > .image:before {
 				background-color: #7ecaf6;
 			}
@@ -2836,11 +2906,11 @@ input, select, textarea {
 			display: block;
 			border-bottom: 0;
 			color: inherit;
-			font-weight: 900;
-			letter-spacing: 0.35em;
+			font-weight: 500;
+			letter-spacing: normal;
 			margin: 0 0 2.5em 0;
 			text-decoration: none;
-			text-transform: uppercase;
+			text-transform: none;
 			display: inline-block;
 		}
 
@@ -3162,6 +3232,10 @@ input, select, textarea {
 
 		}
 
+	#linewidth {
+		max-width: 80%;
+		padding: 0%;
+	}
 /* Footer */
 
 	#footer {
