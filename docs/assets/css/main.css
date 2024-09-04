@@ -2634,6 +2634,8 @@ input, select, textarea {
 			-ms-transition: -ms-transform 0.5s ease, opacity 0.5s ease;
 			transition: transform 0.5s ease, opacity 0.5s ease;
 			position: relative;
+			max-height: 412px;
+			max-width: 412px;
 			width: calc(33.33333% - 2.5em);
 			margin: 2.5em 0 0 2.5em;
 		}
@@ -2644,9 +2646,9 @@ input, select, textarea {
 				-ms-transition: -ms-transform 0.5s ease;
 				transition: transform 0.5s ease;
 				position: relative;
-				display: flex;
+				display: block;
 				height: 100%;
-				width: max-content;
+				width: 100%;
 				justify-content: center;
 				align-items: center;
 				border-radius: 4px;
@@ -2655,22 +2657,25 @@ input, select, textarea {
 			}
 
 				.tiles article > .image img {
+					display: block;
 					object-fit: cover;
 					flex-shrink: 0;
 					height: 412px;
 					width: 412px;
-					
+					justify-content: center;
+					align-items: center;
+					position: relative;
+					overflow: auto;
 
 				}
 				.tiles article:hover img {
 					-webkit-filter: blur(20px); /* Chrome, Safari, Opera */
    					filter: blur(20px);
-					background: rgb(242, 132, 158);
 
 				}
 
 
-				.tiles article > .image:after {
+				.tiles article > .image:before {
 					pointer-events: none;
 					-moz-transition: background-color 0.5s ease, opacity 0.5s ease;
 					-webkit-transition: background-color 0.5s ease, opacity 0.5s ease;
@@ -2679,15 +2684,17 @@ input, select, textarea {
 					content: '';
 					display: block;
 					position: absolute;
+					top:0;
+					left:0;
 					width: 100%;
 					height: 100%;
 					z-index: 1;
-					opacity: 1;
+					opacity: 0.25;
 					
 
 				}
 
-				.tiles article > .image:before {
+				.tiles article > .image:after {
 					pointer-events: none;
 					-moz-transition: opacity 0.5s ease;
 					-webkit-transition: opacity 0.5s ease;
@@ -2706,9 +2713,9 @@ input, select, textarea {
 					background-position: center;
 					background-repeat: no-repeat;
 					background-size: 100% 100%;
-					opacity: 0.25;
+					opacity: 1;
 					z-index: 2;
-					object-fit: cover;
+					
 				}
 
 			.tiles article > a {
